@@ -2,11 +2,12 @@
 class PokerHandEvaluator
 
   def initialize(hands)
-    
+    @hands = hands
+    @hands_list = []
   end
 
   def hand_classifications
-    ['HIGH_CARD']
+    @hands_list.push('HIGH_CARD')
   end
 
 end
