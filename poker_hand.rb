@@ -22,17 +22,25 @@ class PokerHand
   }
 
   def calculate_hand
-    if pair?
+    if two_pair?
+      'TWO_PAIR'
+    elsif pair?
       'ONE_PAIR'
     else
       'HIGH_CARD'
     end
   end
 
+  def two_pair?
+    separate_ranks
+    pairs = @ranks.select { |rank| @ranks.count(rank) == 2 }.uniq
+    pairs.length == 2
+  end
+
   def pair?
     separate_ranks
-    pairs_of_cards = @ranks.select { |rank| @ranks.count(rank) == 2 }.uniq
-    pairs_of_cards.length == 1
+    pairs = @ranks.select { |rank| @ranks.count(rank) == 2 }.uniq
+    pairs.length == 1
   end
 
   private
