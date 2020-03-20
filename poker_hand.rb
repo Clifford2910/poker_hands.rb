@@ -2,6 +2,7 @@ class PokerHand
 
   def initialize(cards)
     @cards = cards.split
+    @ranks = []
   end
 
   CARD_RANKS = {
@@ -21,8 +22,7 @@ class PokerHand
   }
 
   def calculate_hand
-    case
-    when pair?
+    if pair?
       'ONE_PAIR'
     else
       'HIGH_CARD'
@@ -30,11 +30,17 @@ class PokerHand
   end
 
   def pair?
-    ranks = []
-    @cards.each do |card|
-      ranks.push(CARD_RANKS[card[0]])
-    end
-    pairs_of_cards = ranks.select { |rank| ranks.count(rank) == 2 }.uniq
+    separate_ranks
+    pairs_of_cards = @ranks.select { |rank| @ranks.count(rank) == 2 }.uniq
     pairs_of_cards.length == 1
   end
+
+  private
+
+  def separate_ranks
+    @cards.each do |card|
+      @ranks.push(CARD_RANKS[card[0]])
+    end
+  end
+
 end
