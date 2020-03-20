@@ -37,6 +37,8 @@ class PokerHand
 
   private
 
+# methods separated out from code for reuseability and to keep code dry
+
   def separate_ranks
     @cards.each do |card|
       @ranks.push(CARD_RANKS[card[0]])
