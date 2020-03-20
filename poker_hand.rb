@@ -22,13 +22,25 @@ class PokerHand
   }
 
   def calculate_hand
-    if two_pair?
+    if three_of_a_kind?
+      'THREE_OF_A_KIND'
+    elsif two_pair?
       'TWO_PAIR'
     elsif pair?
       'ONE_PAIR'
     else
       'HIGH_CARD'
     end
+  end
+
+  private
+
+# methods separated out from code for reuseability and to keep code dry
+
+  def three_of_a_kind?
+    separate_ranks
+    three_of_a_kind = @ranks.select { |rank| @ranks.count(rank) == 3 }.uniq
+    three_of_a_kind.length == 1
   end
 
   def two_pair?
@@ -42,10 +54,6 @@ class PokerHand
     pairs = @ranks.select { |rank| @ranks.count(rank) == 2 }.uniq
     pairs.length == 1
   end
-
-  private
-
-# methods separated out from code for reuseability and to keep code dry
 
   def separate_ranks
     @cards.each do |card|
