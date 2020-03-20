@@ -23,7 +23,9 @@ class PokerHand
 
   def calculate_hand
     separate_ranks
-    if full_house?
+    if four_of_a_kind?
+      'FOUR_OF_A_KIND'
+    elsif full_house?
       'FULL_HOUSE'
     elsif three_of_a_kind?
       'THREE_OF_A_KIND'
@@ -39,6 +41,11 @@ class PokerHand
   private
 
 # methods separated out from code for reuseability and to keep code dry
+
+  def four_of_a_kind?
+    four_of_a_kind = @ranks.select { |rank| @ranks.count(rank) == 4 }.uniq
+    four_of_a_kind.length == 1
+  end
 
   def full_house?
     three_of_a_kind? && pair?
