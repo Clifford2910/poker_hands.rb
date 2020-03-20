@@ -3,6 +3,7 @@ class PokerHand
   def initialize(cards)
     @cards = cards.split
     @ranks = []
+    @suits = []
   end
 
   CARD_RANKS = {
@@ -23,7 +24,12 @@ class PokerHand
 
   def calculate_hand
     separate_ranks
-    if four_of_a_kind?
+    separate_suits
+    if flush?
+      'FLUSH'
+    elsif straight?
+      'STRAIGHT'
+    elsif four_of_a_kind?
       'FOUR_OF_A_KIND'
     elsif full_house?
       'FULL_HOUSE'
@@ -41,6 +47,19 @@ class PokerHand
   private
 
 # methods separated out from code for reuseability and to keep code dry
+
+  def straight?
+    @ranks.sort
+    if @ranks = [2, 3, 4, 5, 14]
+      @ranks = [1, 2, 3, 4, 5]
+    end
+    @ranks.each_cons(2).all? { |x,y| x == y - 1 }
+  end
+
+  def flush?
+    flush = @suits.select { |suit| @suits.count(suit) == 5 }.uniq
+    flush.length == 1
+  end
 
   def four_of_a_kind?
     four_of_a_kind = @ranks.select { |rank| @ranks.count(rank) == 4 }.uniq
@@ -69,6 +88,12 @@ class PokerHand
   def separate_ranks
     @cards.each do |card|
       @ranks.push(CARD_RANKS[card[0]])
+    end
+  end
+
+  def separate_suits
+    @cards.each do |card|
+      @suits.push(card[1])
     end
   end
 
