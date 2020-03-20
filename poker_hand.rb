@@ -53,7 +53,7 @@ class PokerHand
 # methods separated out from code for reuseability and to keep code dry
 
   def royal_flush?
-    straight_flush? && @ranks = [10, 11, 12, 13, 14]
+    straight_flush? && @ranks.sum == 60
   end
 
   def straight_flush?
@@ -61,8 +61,7 @@ class PokerHand
   end
 
   def straight?
-    @ranks.sort
-    if @ranks = [2, 3, 4, 5, 14]
+    if @ranks == [2, 3, 4, 5, 14]
       @ranks = [1, 2, 3, 4, 5]
     end
     @ranks.each_cons(2).all? { |x,y| x == y - 1 }
@@ -101,6 +100,7 @@ class PokerHand
     @cards.each do |card|
       @ranks.push(CARD_RANKS[card[0]])
     end
+    @ranks.sort!
   end
 
   def separate_suits
