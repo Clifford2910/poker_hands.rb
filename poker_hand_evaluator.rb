@@ -9,7 +9,10 @@ class PokerHandEvaluator
   end
 
   def hand_classifications
-    result = PokerHand.new(@hands[0]).calculate_hand
-    @hands_list.push(result)
+    @hands.each do |hand|
+      result = PokerHand.new(hand).calculate_hand
+      @hands_list.push(result)
+    end
+    @hands_list
   end
 end
