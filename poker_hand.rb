@@ -23,20 +23,19 @@ class PokerHand
   }
 
   def calculate_hand
-    separate_ranks
-    separate_suits
+    separate_ranks_and_suits
     if royal_flush?
       'ROYAL_FLUSH'
     elsif straight_flush?
       'STRAIGHT_FLUSH'
-    elsif flush?
-      'FLUSH'
-    elsif straight?
-      'STRAIGHT'
     elsif four_of_a_kind?
       'FOUR_OF_A_KIND'
     elsif full_house?
       'FULL_HOUSE'
+    elsif flush?
+      'FLUSH'
+    elsif straight?
+      'STRAIGHT'
     elsif three_of_a_kind?
       'THREE_OF_A_KIND'
     elsif two_pair?
@@ -60,18 +59,6 @@ class PokerHand
     straight? && flush?
   end
 
-  def straight?
-    if @ranks == [2, 3, 4, 5, 14]
-      @ranks = [1, 2, 3, 4, 5]
-    end
-    @ranks.each_cons(2).all? { |x,y| x == y - 1 }
-  end
-
-  def flush?
-    flush = @suits.select { |suit| @suits.count(suit) == 5 }.uniq
-    flush.length == 1
-  end
-
   def four_of_a_kind?
     four_of_a_kind = @ranks.select { |rank| @ranks.count(rank) == 4 }.uniq
     four_of_a_kind.length == 1
@@ -79,6 +66,18 @@ class PokerHand
 
   def full_house?
     three_of_a_kind? && pair?
+  end
+
+  def flush?
+    flush = @suits.select { |suit| @suits.count(suit) == 5 }.uniq
+    flush.length == 1
+  end
+
+  def straight?
+    if @ranks == [2, 3, 4, 5, 14]
+      @ranks = [1, 2, 3, 4, 5]
+    end
+    @ranks.each_cons(2).all? { |x,y| x == y - 1 }
   end
 
   def three_of_a_kind?
@@ -96,17 +95,12 @@ class PokerHand
     pairs.length == 1
   end
 
-  def separate_ranks
+  def separate_ranks_and_suits
     @cards.each do |card|
       @ranks.push(CARD_RANKS[card[0]])
-    end
-    @ranks.sort!
-  end
-
-  def separate_suits
-    @cards.each do |card|
       @suits.push(card[1])
     end
+    @ranks.sort!
   end
 
 end
