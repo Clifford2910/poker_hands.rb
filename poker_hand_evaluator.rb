@@ -1,4 +1,6 @@
 # Evaluates poker hands for validity and determines the winning hand
+require_relative 'poker_hand'
+
 class PokerHandEvaluator
 
   def initialize(hands)
@@ -7,7 +9,7 @@ class PokerHandEvaluator
   end
 
   def hand_classifications
-    @hands_list.push('HIGH_CARD')
+    result = PokerHand.new.calculate_hand
+    @hands_list.push(result)
   end
-
 end
