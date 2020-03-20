@@ -25,7 +25,11 @@ class PokerHand
   def calculate_hand
     separate_ranks
     separate_suits
-    if flush?
+    if royal_flush?
+      'ROYAL_FLUSH'
+    elsif straight_flush?
+      'STRAIGHT_FLUSH'
+    elsif flush?
       'FLUSH'
     elsif straight?
       'STRAIGHT'
@@ -47,6 +51,14 @@ class PokerHand
   private
 
 # methods separated out from code for reuseability and to keep code dry
+
+  def royal_flush?
+    straight_flush? && @ranks = [10, 11, 12, 13, 14]
+  end
+
+  def straight_flush?
+    straight? && flush?
+  end
 
   def straight?
     @ranks.sort
