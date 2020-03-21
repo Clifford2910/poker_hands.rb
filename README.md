@@ -2,7 +2,7 @@
 
 ## Index
 * [Challenge](#Challenge)
-* [About the code](#About the code)
+* [About_the_code](#About_the_code)
 * [Installation](#Install)
 * [Rspec Tests](#Rspec)
 * [Usage](#Usage)
@@ -16,7 +16,7 @@
 * Your solution will be scored according to whether or not your code works (i.e. passes all tests). If your code passes all tests, general code quality will also be assessed
 * Test suites have been provided. You may add your own additional tests if you wish, but your code will be assessed against a pristine version of the test suite, so you should **not** change the existing test suite expectations
 
-## <a name="About the code">About the code</a>
+## <a name="About_the_code">About_the_code</a>
 
 ### My Approach:
 * **TDD** - My approach was to use TDD to guide my code, I ran the PART_1 test suite in its entirety to make sure everything was working and from there ran each test in isolation starting with the simplest in complexity and working my way to the hardest. I would use the red-green-refactor method to keep my code quality high. When I was satisfied with my refactor and my test was passing I would commit.
