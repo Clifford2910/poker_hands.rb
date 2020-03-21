@@ -25,8 +25,8 @@
 ### Methods (of note) used
 * **hand_classifications** - Located in PokerHandEvaluator this method iterates through the hands its passed as arguments creating objects for each of them. The calculate_hand method is then called on each hand object returning the appropriate string that tells you what the hand evaluates too.
 * **calculate_hand** - Located in PokerHand this method calls separate_ranks_and_suits which separates ranks and suits into arrays that can then be manipulated by various other 'poker' methods to check what value the input relates to, e.g 'ONE_PAIR'
-* **SELECT** - Elements can be selected from an array according to criteria defined in a block. The selection can happen in a destructive or a non-destructive manner. While the destructive operations will modify the array they were called on, the non-destructive methods usually return a new array with the selected elements, but leave the original array unchanged.
-* **UNIQ** - Returns a new array by removing duplicate values.
+* **select** - Elements can be selected from an array according to criteria defined in a block. The selection can happen in a destructive or a non-destructive manner. While the destructive operations will modify the array they were called on, the non-destructive methods usually return a new array with the selected elements, but leave the original array unchanged.
+* **uniq** - Returns a new array by removing duplicate values.
 * **each_cons().all?** - This method checks if a sequence of numbers is contiguous. each_cons gives you sub-arrays of size n, so if you have [1,2,3], then each_cons(2) will give you [[1,2], [2,3]]. this can then be compared to make sure all the numbers in an array are ascending by 1 and a straight can be validated.
 
 ### Future Implementations
@@ -50,12 +50,12 @@ $ ruby ./poker_hand_evaluator_PART_1b_test.rb
 ## <a name="Usage">Usage</a>
 * In command line:
 ```shell
-$ ruby CL_poker_hand_evaluator 'ARGUMENT'
+$ ruby CL_poker_hand_evaluator.rb 'ARGUMENT'
 ```
 
 * Pass in a relevant parameter as an 'ARGUMENT' (poker hand as a string - e.g "0D JD QD KD AD") you can also pass multiple strings as arguments
 ```shell
-$ ruby CL_poker_hand_evaluator "0D JD QD KD AD"
+$ ruby CL_poker_hand_evaluator.rb "0D JD QD KD AD"
 ```
 
 * Example input / output showing what my app looks like
