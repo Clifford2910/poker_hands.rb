@@ -4,7 +4,7 @@
 * [Challenge](#Challenge)
 * [About the code](#About)
 * [Installation](#Install)
-* [Rspec Tests](#Rspec)
+* [Testing with minitest](#minitest)
 * [Usage](#Usage)
 
 ## <a name="Challenge">Challenge</a>
@@ -39,7 +39,7 @@ $ git clone https://github.com/Clifford2910/poker_hands.rb.git
 $ cd poker_hands.rb
 ```
 
-## <a name="Rspec">Rspec Tests</a>
+## <a name="minitest">Testing with minitest</a>
 * To test the repo:
 ```shell
 $ cd poker_hands.rb
