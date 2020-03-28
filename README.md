@@ -19,7 +19,7 @@
 ## <a name="About">About the code</a>
 
 ### My Approach:
-* **TDD** - My approach was to use TDD to guide my code, I ran the PART_1 test suite in its entirety to make sure everything was working and from there ran each test in isolation starting with the simplest in complexity and working my way to the hardest. I would use the red-green-refactor method to keep my code quality high. When I was satisfied with my refactor and my test was passing I would commit.
+* **TDD** - My approach was to use TDD to guide my code, I ran the PART_1 and PART_1b test suite in its entirety to make sure everything was working and from there ran each test in isolation starting with the simplest in complexity and working my way to the hardest. I would use the red-green-refactor method to keep my code quality high. When I was satisfied with my refactor and my test was passing I would commit.
 * **SRP** - Early on I decided to create a PokerHand class that would do all the logic and heavy lifting, freeing up my PokerHandEvaluator class to simply handle output. I feel like this is inline with the single responsibility principle, each class having a specific role.
 
 ### Methods (of note) used
@@ -29,8 +29,8 @@
 * **uniq** - Returns a new array by removing duplicate values.
 * **each_cons().all?** - This method checks if a sequence of numbers is contiguous. each_cons gives you sub-arrays of size n, so if you have [1,2,3], then each_cons(2) will give you [[1,2], [2,3]]. this can then be compared to make sure all the numbers in an array are ascending by 1 and a straight can be validated.
 
-### Future Implementations
-If I had more time I would like to get all the tests passing for poker_hand_evaluator_PART_1b_test. This was the first time I had used **minitest** and while I enjoyed it and feel I understand the logic I couldn't figure out the syntax to get the tests passing. I have included some code in the form of a custom_error.rb file and a handle_errors method in poker_hand_evaluator that shows my thinking to solve the problem and I would be happy to explain my thought process.
+### Custom error class
+In order to get the tests passing for poker_hand_evaluator_PART_1b_test.rb I had to implement a custom error class in poker_hand_evaluator.rb. As this was my first time using **minitest** it took me a while to figure out the syntax and structure of how to implement this. with the help of Adam and Ruben (Resolver) who gave me some very constructive feedback I was able to figure it out and get all tests passing, for both poker_hand_evaluator_PART_1_test.rb and poker_hand_evaluator_PART_1b_test.rb.
 
 ## <a name="Install">Installation</a>
 * To clone the repo:
