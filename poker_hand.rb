@@ -1,7 +1,7 @@
 class PokerHand
 
   def initialize(cards)
-    @cards = cards.split
+    @cards = cards.split(' ')
     @ranks = []
     @suits = []
   end
